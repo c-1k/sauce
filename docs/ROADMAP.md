@@ -4,19 +4,19 @@ A coordination system for parallel Claude Code agents working on the same codeba
 
 ---
 
-## Phase 0 — Extraction: Standalone Package `IN PROGRESS`
+## Phase 0 — Extraction: Standalone Package `SHIPPED`
 
 **Objective:** Extract Sauce from the Field monorepo into a standalone, installable package.
 
-**What ships:**
+**What shipped:**
 - Core engine extracted from `write-guard.ts` into modular `src/` structure
 - V3 governance libraries (`policy-gate.ts`, `audit.ts`, `message.ts`)
-- Agent skill templates packaged for `cielo init`
+- Agent skill templates packaged for `sauce init`
 - Configurable paths (no hardcoded `/Users/camhome/...`)
-- Working `bun add @cielo/os && bunx cielo init` flow
-- Published to npm as `@cielo/os`
+- Working `bunx @c-1k/sauce init` flow
+- Published to npm as `@c-1k/sauce` v0.1.0
 
-**What becomes possible afterward:**
+**What's now possible:**
 - Anyone can install Sauce in their project
 - Agent skills are scaffolded automatically
 - Coordination works out of the box
@@ -85,6 +85,8 @@ A coordination system for parallel Claude Code agents working on the same codeba
 **Objective:** Launch Sauce fleets on any terminal, not just iTerm2/macOS.
 
 **What will ship:**
+- **`sauce launch` command** — One command spawns full agent fleet in split panes
+- iTerm2 support (macOS) — 7-pane split with all agent roles
 - Terminal-agnostic launch (tmux, screen, native splits)
 - Windows Terminal support
 - Linux terminal support (GNOME Terminal, Konsole, etc.)
@@ -92,6 +94,7 @@ A coordination system for parallel Claude Code agents working on the same codeba
 - Docker-based isolated workers
 
 **What becomes possible afterward:**
+- `bunx @c-1k/sauce launch` → instant 7-agent swarm (the "wow" moment)
 - Sauce runs anywhere Claude Code runs
 - CI pipelines can use Sauce for parallel agent work
 - Cross-platform development teams
@@ -174,30 +177,37 @@ A coordination system for parallel Claude Code agents working on the same codeba
 
 | Phase | Core Delivery | Status |
 |-------|--------------|--------|
-| 0 — Extraction | Standalone npm package | **In Progress** |
-| 1 — Core Coordination | Write-guard, tasks, queue | Shipped (in fermion) |
-| 2 — Agent Roles | 8 specialized agents | Shipped (in fermion) |
-| 3 — V3 Governance | PolicyGate, Audit, Messages | Shipped (in fermion) |
-| 4 — Cross-Platform | Terminal-agnostic launch | Planned |
+| 0 — Extraction | Standalone npm package | **Shipped** (@c-1k/sauce v0.1.0) |
+| 1 — Core Coordination | Write-guard, tasks, queue | Shipped |
+| 2 — Agent Roles | 8 specialized agents | Shipped |
+| 3 — V3 Governance | PolicyGate, Audit, Messages | Shipped |
+| 4 — Cross-Platform | `sauce launch` + terminal-agnostic | Planned |
 | 5 — Skill Marketplace | Shareable agent packages | Planned |
 | 6 — Board of Directors | VP oversight layer | Planned |
 | 7 — Memory & Learning | Cross-session knowledge | Planned |
 
 ---
 
-## Immediate Milestones (Phase 0)
+## Completed Milestones (Phase 0)
 
-- [ ] Create `github.com/cielo-os/cielo` repository
-- [ ] Extract write-guard.ts into modular src/ structure
-- [ ] Move governance libs to src/lib/
-- [ ] Package agent skills as templates/
-- [ ] Implement `cielo init` scaffolding
-- [ ] Make all paths configurable
-- [ ] Write QUICKSTART.md with working examples
-- [ ] Publish v0.1.0 to npm
-- [ ] Add GitHub Actions for CI/CD
+- [x] Extract write-guard.ts into modular src/ structure
+- [x] Move governance libs to src/lib/
+- [x] Package agent skills as templates/
+- [x] Implement `sauce init` scaffolding
+- [x] Make all paths configurable
+- [x] Write QUICKSTART.md with working examples
+- [x] Publish v0.1.0 to npm as @c-1k/sauce
+- [x] Add GitHub Actions for CI/CD
+
+## Next Milestones (Phase 4)
+
+- [ ] Bundle launch-field.scpt with npm package
+- [ ] Implement `sauce launch` CLI command
+- [ ] Add tmux support for Linux/headless
+- [ ] Add Windows Terminal support
+- [ ] Create demo GIF/video for README
 
 ---
 
 *Sauce — Parallel Claude Code coordination*
-*Version: 0.1.0-extraction*
+*Version: 0.1.0*
