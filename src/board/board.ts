@@ -21,7 +21,7 @@ import type {
 // Configuration
 // ---------------------------------------------------------------------------
 
-const COORD_DIR = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+const COORD_DIR = process.env.CIELO_COORD ?? join(process.cwd(), ".coord");
 const BOARD_DIR = join(COORD_DIR, "board");
 const SESSION_FILE = join(BOARD_DIR, "session.json");
 const HISTORY_FILE = join(BOARD_DIR, "history.jsonl");
@@ -296,13 +296,13 @@ export function requiresBoardReview(
 
 	// Context-dependent
 	if (decisionType === "scope_expansion") {
-		const scope = (context?.["scope"] as string[]) ?? [];
+		const scope = (context?.scope as string[]) ?? [];
 		// Review if scope is broad
 		return scope.length > 5 || scope.some((s) => s === "**");
 	}
 
 	if (decisionType === "resource_intensive") {
-		const cost = (context?.["estimatedCost"] as number) ?? 0;
+		const cost = (context?.estimatedCost as number) ?? 0;
 		return cost > 50;
 	}
 

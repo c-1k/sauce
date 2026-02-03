@@ -14,8 +14,8 @@ import type { CoordEvent } from "../types/engine";
 // Path Resolution
 // ---------------------------------------------------------------------------
 
-let coordDir = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
-let repoRoot = process.env["CIELO_ROOT"] ?? process.cwd();
+let coordDir = process.env.CIELO_COORD ?? join(process.cwd(), ".coord");
+let repoRoot = process.env.CIELO_ROOT ?? process.cwd();
 
 /**
  * Set the coordination directory path.
@@ -85,7 +85,7 @@ export function getCurrentBranch(): string {
  * Get actor ID from environment or git config.
  */
 export function getActorId(): string {
-	const envActor = process.env["WRITE_GUARD_ACTOR"] ?? process.env["CIELO_ACTOR"];
+	const envActor = process.env.WRITE_GUARD_ACTOR ?? process.env.CIELO_ACTOR;
 	if (envActor) return envActor;
 	try {
 		return execSync("git config user.email", { cwd: repoRoot, encoding: "utf-8" }).trim();
@@ -172,7 +172,7 @@ export function emitEvent(options: EmitEventOptions): CoordEvent {
 
 	// Include correlation ID if available
 	if (options.correlationId ?? activeCorrelation?.correlationId) {
-		event.details["correlation_id"] = options.correlationId ?? activeCorrelation?.correlationId;
+		event.details.correlation_id = options.correlationId ?? activeCorrelation?.correlationId;
 	}
 
 	// Append to events.jsonl

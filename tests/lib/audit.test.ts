@@ -78,9 +78,9 @@ describe("emitReceipt - basic emission", () => {
 			data: { event: "test" },
 		});
 
-		expect(receipt1?.data["receiptId"]).toBeDefined();
-		expect(receipt2?.data["receiptId"]).toBeDefined();
-		expect(receipt1?.data["receiptId"]).not.toBe(receipt2?.data["receiptId"]);
+		expect(receipt1?.data.receiptId).toBeDefined();
+		expect(receipt2?.data.receiptId).toBeDefined();
+		expect(receipt1?.data.receiptId).not.toBe(receipt2?.data.receiptId);
 	});
 
 	it("includes correlation ID when provided", () => {
@@ -214,8 +214,8 @@ describe("emitPolicyReceipt", () => {
 		expect(receipt?.kind).toBe("policy");
 		expect(receipt?.subsystem).toBe("policy-gate");
 		expect(receipt?.actor).toBe("worker-alpha");
-		expect(receipt?.data["action"]).toBe("task.claim");
-		expect(receipt?.data["decision"]).toBe("allow");
+		expect(receipt?.data.action).toBe("task.claim");
+		expect(receipt?.data.decision).toBe("allow");
 	});
 
 	it("includes violation reasons", () => {
@@ -224,8 +224,8 @@ describe("emitPolicyReceipt", () => {
 			"Scope overlap",
 		]);
 
-		expect(receipt?.data["reasons"]).toEqual(["Rule X violated", "Scope overlap"]);
-		expect(receipt?.data["violationCount"]).toBe(2);
+		expect(receipt?.data.reasons).toEqual(["Rule X violated", "Scope overlap"]);
+		expect(receipt?.data.violationCount).toBe(2);
 	});
 });
 
@@ -234,8 +234,8 @@ describe("emitTaskReceipt", () => {
 		const receipt = emitTaskReceipt("worker-alpha", "T-0001", "claimed");
 
 		expect(receipt?.kind).toBe("task");
-		expect(receipt?.data["event"]).toBe("task_claimed");
-		expect(receipt?.data["task_id"]).toBe("T-0001");
+		expect(receipt?.data.event).toBe("task_claimed");
+		expect(receipt?.data.task_id).toBe("T-0001");
 	});
 
 	it("includes additional details", () => {
@@ -244,8 +244,8 @@ describe("emitTaskReceipt", () => {
 			scope: ["src/**"],
 		});
 
-		expect(receipt?.data["branch"]).toBe("feat/new-feature");
-		expect(receipt?.data["scope"]).toEqual(["src/**"]);
+		expect(receipt?.data.branch).toBe("feat/new-feature");
+		expect(receipt?.data.scope).toEqual(["src/**"]);
 	});
 });
 
@@ -254,9 +254,9 @@ describe("emitLeaseReceipt", () => {
 		const receipt = emitLeaseReceipt("worker-alpha", "wg_abc123", "claimed", ["src/routes/**"]);
 
 		expect(receipt?.kind).toBe("lease");
-		expect(receipt?.data["event"]).toBe("lease_claimed");
-		expect(receipt?.data["lease_id"]).toBe("wg_abc123");
-		expect(receipt?.data["scope"]).toEqual(["src/routes/**"]);
+		expect(receipt?.data.event).toBe("lease_claimed");
+		expect(receipt?.data.lease_id).toBe("wg_abc123");
+		expect(receipt?.data.scope).toEqual(["src/routes/**"]);
 	});
 });
 
@@ -267,9 +267,9 @@ describe("emitQueueReceipt", () => {
 		});
 
 		expect(receipt?.kind).toBe("queue");
-		expect(receipt?.data["event"]).toBe("queue_merged");
-		expect(receipt?.data["queue_id"]).toBe("Q-0001");
-		expect(receipt?.data["branch"]).toBe("feat/feature");
+		expect(receipt?.data.event).toBe("queue_merged");
+		expect(receipt?.data.queue_id).toBe("Q-0001");
+		expect(receipt?.data.branch).toBe("feat/feature");
 	});
 });
 
@@ -281,8 +281,8 @@ describe("emitWorkerReceipt", () => {
 
 		expect(receipt?.kind).toBe("worker");
 		expect(receipt?.actor).toBe("worker-beta");
-		expect(receipt?.data["event"]).toBe("worker_registered");
-		expect(receipt?.data["worker_id"]).toBe("worker-beta");
+		expect(receipt?.data.event).toBe("worker_registered");
+		expect(receipt?.data.worker_id).toBe("worker-beta");
 	});
 });
 
@@ -292,7 +292,7 @@ describe("emitSystemReceipt", () => {
 
 		expect(receipt?.kind).toBe("system");
 		expect(receipt?.subsystem).toBe("daemon");
-		expect(receipt?.data["event"]).toBe("startup");
+		expect(receipt?.data.event).toBe("startup");
 	});
 });
 

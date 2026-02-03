@@ -19,7 +19,7 @@ interface Worker {
 type WorkerStore = Record<string, Worker>;
 
 function getCoordDir(): string {
-	return process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+	return process.env.CIELO_COORD ?? join(process.cwd(), ".coord");
 }
 
 function getWorkersFile(): string {

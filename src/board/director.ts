@@ -67,7 +67,7 @@ function detectConcerns(
 			});
 		}
 		// Check for missing evidence
-		if (request.decisionType === "policy_override" && !context["justification"]) {
+		if (request.decisionType === "policy_override" && !context.justification) {
 			concerns.push({
 				type: "hallucination",
 				severity: "high",
@@ -80,12 +80,12 @@ function detectConcerns(
 	// Bias detection
 	if (focusAreas.includes("bias")) {
 		// Check for preferential treatment patterns
-		if (context["preferredWorker"] && request.decisionType === "scope_expansion") {
+		if (context.preferredWorker && request.decisionType === "scope_expansion") {
 			concerns.push({
 				type: "bias",
 				severity: "medium",
 				description: "Potential worker preference bias in scope assignment",
-				evidence: `Preferred worker: ${context["preferredWorker"]}`,
+				evidence: `Preferred worker: ${context.preferredWorker}`,
 			});
 		}
 	}
@@ -131,7 +131,7 @@ function detectConcerns(
 	// Resource abuse detection
 	if (focusAreas.includes("resource_abuse")) {
 		if (request.decisionType === "resource_intensive") {
-			const estimatedCost = context["estimatedCost"] as number | undefined;
+			const estimatedCost = context.estimatedCost as number | undefined;
 			if (estimatedCost && estimatedCost > 100) {
 				concerns.push({
 					type: "resource_abuse",
