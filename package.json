@@ -1,5 +1,5 @@
 {
-	"name": "sauce",
+	"name": "@c-1k/sauce",
 	"version": "0.1.0",
 	"description": "Sauce (CoS) — The secret ingredient for parallel Claude Code agents",
 	"type": "module",
