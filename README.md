@@ -13,9 +13,10 @@
                   by Sauce Labs
 ```
 
-[![CI](https://github.com/sauce-labs/sauce/actions/workflows/ci.yml/badge.svg)](https://github.com/sauce-labs/sauce/actions/workflows/ci.yml)
+[![CI](https://github.com/c-1k/sauce/actions/workflows/ci.yml/badge.svg)](https://github.com/c-1k/sauce/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/sauce.svg)](https://www.npmjs.com/package/sauce)
+[![npm version](https://img.shields.io/npm/v/@cielo/os.svg)](https://www.npmjs.com/package/@cielo/os)
+[![Bun](https://img.shields.io/badge/Bun-1.0+-black?logo=bun)](https://bun.sh)
 
 **Run multiple Claude Code agents on the same codebase without conflicts.**
 
@@ -225,7 +226,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ```bash
 # Development setup
-git clone https://github.com/sauce-labs/sauce
+git clone https://github.com/c-1k/sauce
 cd sauce
 bun install
 bun test
