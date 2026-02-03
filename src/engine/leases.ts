@@ -14,7 +14,7 @@ import type { Lease, LeaseStore } from "../types/engine";
 // Path Resolution
 // ---------------------------------------------------------------------------
 
-let coordDir = process.env.CIELO_COORD ?? join(process.cwd(), ".coord");
+let coordDir = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
 
 /**
  * Set the coordination directory path.

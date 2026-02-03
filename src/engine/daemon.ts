@@ -16,8 +16,8 @@ import { join } from "node:path";
 // Path Resolution
 // ---------------------------------------------------------------------------
 
-let coordDir = process.env.CIELO_COORD ?? join(process.cwd(), ".coord");
-let repoRoot = process.env.CIELO_ROOT ?? process.cwd();
+let coordDir = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+let repoRoot = process.env["CIELO_ROOT"] ?? process.cwd();
 
 /**
  * Set the coordination directory path.

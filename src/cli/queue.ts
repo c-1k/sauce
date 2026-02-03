@@ -25,7 +25,7 @@ interface QueueItem {
 type QueueStore = Record<string, QueueItem>;
 
 function getCoordDir(): string {
-	return process.env.CIELO_COORD ?? join(process.cwd(), ".coord");
+	return process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
 }
 
 function getQueueFile(): string {

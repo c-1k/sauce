@@ -1,12 +1,18 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.9.0/schema.json",
+	"files": {
+		"ignore": [".coord/**", "dist/**", "node_modules/**"]
+	},
 	"organizeImports": {
 		"enabled": true
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"complexity": {
+				"useLiteralKeys": "off"
+			}
 		}
 	},
 	"formatter": {

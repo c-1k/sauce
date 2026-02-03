@@ -31,7 +31,7 @@ import {
 // Test Setup - Use temp messages file
 // ---------------------------------------------------------------------------
 
-const COORD_DIR = process.env.CIELO_COORD ?? join(process.cwd(), ".coord");
+const COORD_DIR = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
 const MESSAGES_FILE = join(COORD_DIR, "messages.json");
 
 // Clear messages before each test

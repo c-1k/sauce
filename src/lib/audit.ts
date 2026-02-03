@@ -33,7 +33,7 @@ import type { AuditReceipt, CorrelationContext, ReceiptKind } from "../types/gov
 // Configuration
 // ---------------------------------------------------------------------------
 
-const COORD_DIR = process.env.CIELO_COORD ?? join(process.cwd(), ".coord");
+const COORD_DIR = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
 const EVENTS_FILE = join(COORD_DIR, "events.jsonl");
 const AUDIT_DIR = join(COORD_DIR, "audit");
 const INDEX_FILE = join(AUDIT_DIR, "index.json");
@@ -223,9 +223,9 @@ export function emitReceipt(input: EmitReceiptInput): AuditReceipt | undefined {
 		// Convert to legacy event format for compatibility with existing events.jsonl
 		const legacyEvent = {
 			ts: receipt.ts,
-			event_type: `${input.kind.toUpperCase()}_${String(input.data.event ?? input.data.action ?? "RECEIPT").toUpperCase()}`,
+			event_type: `${input.kind.toUpperCase()}_${String(input.data["event"] ?? input.data["action"] ?? "RECEIPT").toUpperCase()}`,
 			actor: receipt.actor,
-			repo_branch: String(input.data.branch ?? process.env.GIT_BRANCH ?? "unknown"),
+			repo_branch: String(input.data["branch"] ?? process.env["GIT_BRANCH"] ?? "unknown"),
 			details: {
 				...receipt.data,
 				subsystem: receipt.subsystem,
