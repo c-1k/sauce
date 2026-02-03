@@ -1,0 +1,17 @@
+# Assets Directory
+
+This directory holds media assets for the Cielo project:
+
+- demo.gif — Demo recording for README
+- logo.svg — Cielo logo (optional)
+- architecture.png — Architecture diagram (optional)
+
+## Recording Demo
+
+See docs/DEMO-SCRIPT.md for instructions on recording the demo GIF.
+
+## Recommended Tools
+
+- asciinema + svg-term — For terminal recordings
+- terminalizer — Alternative GIF recorder
+- LICEcap — Simple screen capture to GIF
