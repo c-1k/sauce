@@ -15,7 +15,7 @@
 
 [![CI](https://github.com/c-1k/sauce/actions/workflows/ci.yml/badge.svg)](https://github.com/c-1k/sauce/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/@cielo/os.svg)](https://www.npmjs.com/package/@cielo/os)
+[![npm version](https://img.shields.io/npm/v/sauce.svg)](https://www.npmjs.com/package/sauce)
 [![Bun](https://img.shields.io/badge/Bun-1.0+-black?logo=bun)](https://bun.sh)
 
 **Run multiple Claude Code agents on the same codebase without conflicts.**
