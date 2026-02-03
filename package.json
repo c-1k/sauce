@@ -6,8 +6,8 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"bin": {
-		"sauce": "./bin/sauce.js",
-		"cielo": "./bin/sauce.js"
+		"sauce": "./bin/sauce.ts",
+		"cielo": "./bin/sauce.ts"
 	},
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
@@ -35,11 +35,11 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/cielo-os/cielo.git"
+		"url": "https://github.com/sauce-labs/sauce.git"
 	},
-	"homepage": "https://github.com/cielo-os/cielo#readme",
+	"homepage": "https://github.com/sauce-labs/sauce#readme",
 	"bugs": {
-		"url": "https://github.com/cielo-os/cielo/issues"
+		"url": "https://github.com/sauce-labs/sauce/issues"
 	},
 	"engines": {
 		"node": ">=18",

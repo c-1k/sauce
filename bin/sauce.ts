@@ -1,9 +1,9 @@
 #!/usr/bin/env bun
 
 /**
- * Cielo CLI — Entry Point
+ * Sauce CLI — Entry Point
  *
- * Coordination system for parallel Claude Code agents.
+ * The secret ingredient for parallel Claude Code agents.
  */
 
 import { init } from "../src/cli/init";
@@ -38,12 +38,12 @@ function parseArgs(args: string[]): { flags: Record<string, string>; positional:
 
 function showHelp(): void {
 	console.log(`
-Cielo v${VERSION} — Coordination system for parallel Claude Code agents
+Sauce v${VERSION} — The secret ingredient for parallel Claude Code agents
 
-Usage: cielo <command> [subcommand] [options]
+Usage: sauce <command> [subcommand] [options]
 
 Commands:
-  init                      Initialize cielo in current project
+  init                      Initialize sauce in current project
   task create               Create a new task
   task list                 List tasks
   task claim                Claim next available task
@@ -61,17 +61,17 @@ Options:
   --version, -v             Show version
 
 Examples:
-  cielo init
-  cielo task create --title "Add feature" --scope "src/**"
-  cielo task claim --worker worker-1
-  cielo worker register --id worker-1 --skills typescript,testing
-  cielo queue enqueue --branch feat/x --scope "src/**" --owner worker-1
+  sauce init
+  sauce task create --title "Add feature" --scope "src/**"
+  sauce task claim --worker worker-1
+  sauce worker register --id worker-1 --skills typescript,testing
+  sauce queue enqueue --branch feat/x --scope "src/**" --owner worker-1
 `);
 }
 
 function showTaskHelp(): void {
 	console.log(`
-cielo task — Task management
+sauce task — Task management
 
 Subcommands:
   create          Create a new task
@@ -100,7 +100,7 @@ Options for 'complete':
 
 function showWorkerHelp(): void {
 	console.log(`
-cielo worker — Worker management
+sauce worker — Worker management
 
 Subcommands:
   register        Register a new worker
@@ -119,7 +119,7 @@ Options for 'heartbeat' and 'offline':
 
 function showQueueHelp(): void {
 	console.log(`
-cielo queue — Integration queue
+sauce queue — Integration queue
 
 Subcommands:
   enqueue         Add item to queue
@@ -298,7 +298,7 @@ async function main(): Promise<void> {
 		}
 
 		case "status": {
-			console.log("\nCielo Status\n");
+			console.log("\nSauce Status\n");
 			console.log("Workers:");
 			listWorkers();
 			console.log("Tasks:");
