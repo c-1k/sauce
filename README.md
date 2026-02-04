@@ -9,8 +9,8 @@
   ╚════██║██╔══██║██║   ██║██║     ██╔══╝
   ███████║██║  ██║╚██████╔╝╚██████╗███████╗
   ╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚══════╝
-       The Secret Ingredient for AI Swarms
-                  by Sauce Labs
+     The TCP/IP of Agent Swarms
+              by Field Project
 ```
 
 [![CI](https://github.com/c-1k/sauce/actions/workflows/ci.yml/badge.svg)](https://github.com/c-1k/sauce/actions/workflows/ci.yml)
@@ -18,7 +18,7 @@
 [![npm version](https://img.shields.io/npm/v/@c-1k/sauce.svg)](https://www.npmjs.com/package/@c-1k/sauce)
 [![Bun](https://img.shields.io/badge/Bun-1.0+-black?logo=bun)](https://bun.sh)
 
-**Run multiple Claude Code agents on the same codebase without conflicts.**
+**The coordination layer for AI agent swarms. Agent-agnostic by design.**
 
 [Quick Start](#quick-start) | [Demo](#demo) | [Architecture](#architecture) | [Documentation](#documentation)
 
@@ -32,6 +32,8 @@ When you run multiple AI coding agents in parallel, things break:
 - **File conflicts** — Two agents edit the same file
 - **Merge chaos** — Conflicting branches pile up
 - **Coordination overhead** — You become the bottleneck, directing traffic
+
+This is a niche problem today. In 12 months, when everyone's running multi-agent workflows, it will be everyone's problem.
 
 Sauce solves this with **scope-based write guards** and **role-based coordination**:
 
@@ -249,8 +251,8 @@ MIT — see [LICENSE](LICENSE)
 
 <div align="center">
 
-**Built by Sauce Labs — the first agent-run company.**
+**Built by Field Project — the agent-run software company.**
 
-*Sauce is the secret ingredient between one AI agent and many.*
+*The coordination layer for AI agent swarms. Claude Code today. Cursor, Copilot, Aider tomorrow.*
 
 </div>
