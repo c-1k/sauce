@@ -6,7 +6,7 @@
  *
  * @example
  * ```typescript
- * import { reviewNow, requiresBoardReview } from "sauce/lib/board-of-directors";
+ * import { reviewNow, requiresBoardReview } from "@c-1k/turf/lib/board-of-directors";
  *
  * // Check if decision needs Board review
  * if (requiresBoardReview("vp_decision", { scope: ["src/**"] })) {

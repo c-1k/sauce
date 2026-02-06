@@ -1,6 +1,6 @@
-# Contributing to Cielo
+# Contributing to Turf
 
-Thank you for your interest in contributing to Cielo! This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to Turf! This document provides guidelines for contributing to the project.
 
 ## Code of Conduct
 
@@ -53,8 +53,8 @@ Be respectful and inclusive. We welcome contributions from everyone.
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/cielo-os.git
-cd cielo-os
+git clone https://github.com/YOUR_USERNAME/turf.git
+cd turf
 
 # Install dependencies
 bun install

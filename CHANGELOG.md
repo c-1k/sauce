@@ -84,4 +84,4 @@ Pre-built Claude Code prompts for:
 - Biome for linting and formatting
 - Strict TypeScript with exactOptionalPropertyTypes
 
-[0.1.0]: https://github.com/c-1k/sauce/releases/tag/v0.1.0
+[0.1.0]: https://github.com/c-1k/turf/releases/tag/v0.1.0

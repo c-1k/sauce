@@ -1,9 +1,9 @@
 #!/usr/bin/env bun
 
 /**
- * Sauce CLI — Entry Point
+ * Turf CLI — Entry Point
  *
- * The secret ingredient for parallel Claude Code agents.
+ * The coordination layer for parallel Claude Code agents.
  */
 
 import { init } from "../src/cli/init";
@@ -38,12 +38,12 @@ function parseArgs(args: string[]): { flags: Record<string, string>; positional:
 
 function showHelp(): void {
 	console.log(`
-Sauce v${VERSION} — The secret ingredient for parallel Claude Code agents
+Turf v${VERSION} — The coordination layer for parallel Claude Code agents
 
-Usage: sauce <command> [subcommand] [options]
+Usage: turf <command> [subcommand] [options]
 
 Commands:
-  init                      Initialize sauce in current project
+  init                      Initialize turf in current project
   task create               Create a new task
   task list                 List tasks
   task claim                Claim next available task
@@ -61,17 +61,17 @@ Options:
   --version, -v             Show version
 
 Examples:
-  sauce init
-  sauce task create --title "Add feature" --scope "src/**"
-  sauce task claim --worker worker-1
-  sauce worker register --id worker-1 --skills typescript,testing
-  sauce queue enqueue --branch feat/x --scope "src/**" --owner worker-1
+  turf init
+  turf task create --title "Add feature" --scope "src/**"
+  turf task claim --worker worker-1
+  turf worker register --id worker-1 --skills typescript,testing
+  turf queue enqueue --branch feat/x --scope "src/**" --owner worker-1
 `);
 }
 
 function showTaskHelp(): void {
 	console.log(`
-sauce task — Task management
+turf task — Task management
 
 Subcommands:
   create          Create a new task
@@ -100,7 +100,7 @@ Options for 'complete':
 
 function showWorkerHelp(): void {
 	console.log(`
-sauce worker — Worker management
+turf worker — Worker management
 
 Subcommands:
   register        Register a new worker
@@ -119,7 +119,7 @@ Options for 'heartbeat' and 'offline':
 
 function showQueueHelp(): void {
 	console.log(`
-sauce queue — Integration queue
+turf queue — Integration queue
 
 Subcommands:
   enqueue         Add item to queue
@@ -298,7 +298,7 @@ async function main(): Promise<void> {
 		}
 
 		case "status": {
-			console.log("\nSauce Status\n");
+			console.log("\nTurf Status\n");
 			console.log("Workers:");
 			listWorkers();
 			console.log("Tasks:");
