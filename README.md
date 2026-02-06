@@ -1,21 +1,21 @@
-# Sauce
+# Turf
 
 <div align="center">
 
 ```
-  ███████╗ █████╗ ██╗   ██╗ ██████╗███████╗
-  ██╔════╝██╔══██╗██║   ██║██╔════╝██╔════╝
-  ███████╗███████║██║   ██║██║     █████╗
-  ╚════██║██╔══██║██║   ██║██║     ██╔══╝
-  ███████║██║  ██║╚██████╔╝╚██████╗███████╗
-  ╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚══════╝
+  ████████╗██╗   ██╗██████╗ ███████╗
+  ╚══██╔══╝██║   ██║██╔══██╗██╔════╝
+     ██║   ██║   ██║██████╔╝█████╗
+     ██║   ██║   ██║██╔══██╗██╔══╝
+     ██║   ╚██████╔╝██║  ██║██║
+     ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝
      The TCP/IP of Agent Swarms
               by Field Project
 ```
 
-[![CI](https://github.com/c-1k/sauce/actions/workflows/ci.yml/badge.svg)](https://github.com/c-1k/sauce/actions/workflows/ci.yml)
+[![CI](https://github.com/c-1k/turf/actions/workflows/ci.yml/badge.svg)](https://github.com/c-1k/turf/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/@c-1k/sauce.svg)](https://www.npmjs.com/package/@c-1k/sauce)
+[![npm version](https://img.shields.io/npm/v/@c-1k/turf.svg)](https://www.npmjs.com/package/@c-1k/turf)
 [![Bun](https://img.shields.io/badge/Bun-1.0+-black?logo=bun)](https://bun.sh)
 
 **The coordination layer for AI agent swarms. Agent-agnostic by design.**
@@ -26,7 +26,7 @@
 
 ---
 
-## Why Sauce?
+## Why Turf?
 
 When you run multiple AI coding agents in parallel, things break:
 - **File conflicts** — Two agents edit the same file
@@ -35,14 +35,14 @@ When you run multiple AI coding agents in parallel, things break:
 
 This is a niche problem today. In 12 months, when everyone's running multi-agent workflows, it will be everyone's problem.
 
-Sauce solves this with **scope-based write guards** and **role-based coordination**:
+Turf solves this with **scope-based write guards** and **role-based coordination**:
 
 ```bash
 # Agent claims exclusive scope before editing
-sauce claim --scope "src/auth/**" --actor worker-alpha
+turf claim --scope "src/auth/**" --actor worker-alpha
 
 # Other agents cannot claim overlapping files
-sauce claim --scope "src/auth/login.ts" --actor worker-beta
+turf claim --scope "src/auth/login.ts" --actor worker-beta
 # ERROR: Scope conflict with worker-alpha
 ```
 
@@ -57,16 +57,16 @@ sauce claim --scope "src/auth/login.ts" --actor worker-beta
 
 ```bash
 # Install
-bun add sauce
+bun add @c-1k/turf
 
 # Initialize in your project
-bunx sauce init
+bunx turf init
 
 # Create worker worktrees
-bunx sauce setup --workers 2
+bunx turf setup --workers 2
 
 # Start the coordination system
-bunx sauce launch
+bunx turf launch
 ```
 
 That's it. Your project now has:
@@ -136,7 +136,7 @@ That's it. Your project now has:
 
 ## Configuration
 
-Create `sauce.config.json`:
+Create `turf.config.json`:
 
 ```json
 {
@@ -153,38 +153,38 @@ Create `sauce.config.json`:
 
 ```bash
 # Project setup
-sauce init                    # Initialize coordination
-sauce setup --workers N       # Create N worker worktrees
-sauce launch                  # Start the agent fleet
+turf init                    # Initialize coordination
+turf setup --workers N       # Create N worker worktrees
+turf launch                  # Start the agent fleet
 
 # Task management
-sauce task create --title "..." --scope "src/**"
-sauce task list [--status pending|assigned|completed]
-sauce task claim --worker worker-alpha
-sauce task complete --id T-0001
+turf task create --title "..." --scope "src/**"
+turf task list [--status pending|assigned|completed]
+turf task claim --worker worker-alpha
+turf task complete --id T-0001
 
 # Write guards
-sauce claim --scope "src/**" --actor worker-alpha --intent "Refactoring"
-sauce release --actor worker-alpha
-sauce leases                  # Show active scope locks
+turf claim --scope "src/**" --actor worker-alpha --intent "Refactoring"
+turf release --actor worker-alpha
+turf leases                  # Show active scope locks
 
 # Integration queue
-sauce queue list
-sauce queue process           # Merge next approved item
-sauce queue process --all     # Merge all approved items
+turf queue list
+turf queue process           # Merge next approved item
+turf queue process --all     # Merge all approved items
 
 # Worker management
-sauce worker register --id worker-gamma --skills typescript,testing
-sauce worker list
-sauce status                  # System overview
+turf worker register --id worker-gamma --skills typescript,testing
+turf worker list
+turf status                  # System overview
 ```
 
 ## Governance Layer
 
-Sauce includes a governance subsystem for policy enforcement and audit:
+Turf includes a governance subsystem for policy enforcement and audit:
 
 ```typescript
-import { evaluatePolicy, emitReceipt, sendDirectMessage } from "sauce";
+import { evaluatePolicy, emitReceipt, sendDirectMessage } from "@c-1k/turf";
 
 // Policy evaluation before actions
 const result = evaluatePolicy(
@@ -217,7 +217,7 @@ sendDirectMessage("worker-alpha", "manager", "Task Complete", "T-0001 done");
 ## Documentation
 
 - [Quick Start Guide](docs/QUICKSTART.md) — Get running in 5 minutes
-- [Architecture Overview](docs/ARCHITECTURE.md) — How Sauce works
+- [Architecture Overview](docs/ARCHITECTURE.md) — How Turf works
 - [Role Definitions](docs/ROLES.md) — Agent responsibilities
 - [CLI Reference](docs/CLI.md) — All commands documented
 - [Demo Script](docs/DEMO-SCRIPT.md) — Recording guide
@@ -228,8 +228,8 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ```bash
 # Development setup
-git clone https://github.com/c-1k/sauce
-cd sauce
+git clone https://github.com/c-1k/turf
+cd turf
 bun install
 bun test
 ```

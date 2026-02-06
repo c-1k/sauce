@@ -1,6 +1,6 @@
-# Sauce — Extraction Plan
+# Turf — Extraction Plan
 
-Extract Sauce from the Field monorepo into a standalone, publishable package.
+Extract Turf from the Field monorepo into a standalone, publishable package.
 
 ---
 
@@ -94,7 +94,7 @@ cielo-os/                         # Standalone package
 │   │   └── pre-commit.sh
 │   │
 │   └── config/
-│       └── cielo.config.json     # Default config
+│       └── turf.config.json      # Default config
 │
 ├── tests/
 │   ├── engine/
@@ -152,7 +152,7 @@ Replace hardcoded paths with `{{COORD_DIR}}` and `{{PROJECT_ROOT}}` placeholders
 ### 4. Path Configuration
 
 Create `src/config.ts` that:
-- Reads `cielo.config.json` from project root
+- Reads `turf.config.json` from project root
 - Falls back to sensible defaults
 - Provides `getCoordDir()`, `getProjectRoot()`, etc.
 
@@ -174,7 +174,7 @@ cielo skill install|list      # Skill management (future)
 ```bash
 $ bunx cielo init
 
-Sauce v0.1.0
+Turf v0.1.0
 
 Creating coordination structure...
   ✓ Created .coord/
@@ -193,9 +193,9 @@ Installing agent skills...
   ✓ Created .claude/commands/agentcomms.md
   ✓ Created .claude/commands/cielo.md
 
-Created cielo.config.json
+Created turf.config.json
 
-Sauce is ready! Run 'cielo launch' to start your agent fleet.
+Turf is ready! Run 'cielo launch' to start your agent fleet.
 ```
 
 ---
@@ -244,7 +244,7 @@ Sprint 5: Polish
 ## Compatibility Notes
 
 - Keep fermion's write-guard.ts working during extraction (don't break Field)
-- Sauce should work with or without Field particles
+- Turf should work with or without Field particles
 - Agent skills should be terminal-agnostic where possible
 - iTerm2-specific features (split panes, AppleScript) should be optional
 

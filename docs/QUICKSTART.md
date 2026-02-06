@@ -1,28 +1,28 @@
 # Quick Start
 
-Get Sauce running in your project in 5 minutes.
+Get Turf running in your project in 5 minutes.
 
 ## 1. Install
 
 ```bash
-bun add @cielo/os
+bun add @c-1k/turf
 ```
 
 ## 2. Initialize
 
 ```bash
-bunx cielo init
+bunx turf init
 ```
 
 This creates:
 - `.coord/` — Coordination state (tasks, queue, leases)
 - `.claude/commands/` — Agent role prompts
-- `cielo.config.json` — Project configuration
+- `turf.config.json` — Project configuration
 
 ## 3. Create Your First Task
 
 ```bash
-bunx cielo task create --title "Add user authentication" --scope "src/auth/**"
+bunx turf task create --title "Add user authentication" --scope "src/auth/**"
 ```
 
 Tasks have:
@@ -31,13 +31,13 @@ Tasks have:
 
 List tasks:
 ```bash
-bunx cielo task list
+bunx turf task list
 ```
 
 ## 4. Register a Worker
 
 ```bash
-bunx cielo worker register --id worker-1 --skills typescript,testing
+bunx turf worker register --id worker-1 --skills typescript,testing
 ```
 
 Workers are AI agents that claim and complete tasks. Skills help match workers to appropriate tasks.
@@ -46,10 +46,10 @@ Workers are AI agents that claim and complete tasks. Skills help match workers t
 
 ```bash
 # Worker claims the highest-priority available task
-bunx cielo task claim --worker worker-1
+bunx turf task claim --worker worker-1
 
 # Start working (creates branch, acquires scope lock)
-bunx cielo task start --id T-0001 --worker worker-1
+bunx turf task start --id T-0001 --worker worker-1
 ```
 
 ## 6. Complete the Task
@@ -57,17 +57,17 @@ bunx cielo task start --id T-0001 --worker worker-1
 After implementing the changes:
 
 ```bash
-bunx cielo task complete --id T-0001
+bunx turf task complete --id T-0001
 ```
 
 ## What's Next?
 
 - **Add more workers** — Run multiple agents in parallel with isolated worktrees
-- **Use the integration queue** — Orderly merging with `cielo queue enqueue`
+- **Use the integration queue** — Orderly merging with `turf queue enqueue`
 - **Enable skill routing** — Match tasks to workers automatically
 
 See the full [CLI Reference](../README.md#cli-reference) for all commands.
 
 ---
 
-**Need help?** Open an issue at [github.com/sauce-labs/sauce](https://github.com/sauce-labs/sauce/issues)
+**Need help?** Open an issue at [github.com/c-1k/turf](https://github.com/c-1k/turf/issues)

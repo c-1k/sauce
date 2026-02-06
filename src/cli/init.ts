@@ -1,7 +1,7 @@
 /**
- * Sauce CLI — Init Command
+ * Turf CLI — Init Command
  *
- * Scaffolds a new Sauce project with coordination structure and agent skills.
+ * Scaffolds a new Turf project with coordination structure and agent skills.
  */
 
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
@@ -15,20 +15,20 @@ interface InitOptions {
 }
 
 /**
- * Initialize Sauce in the current or specified directory.
+ * Initialize Turf in the current or specified directory.
  */
 export function init(options: InitOptions = {}): void {
 	const projectRoot = options.projectRoot ?? process.cwd();
 	const workers = options.workers ?? DEFAULT_CONFIG.workers;
 
 	console.log("\n╭─────────────────────────────────────╮");
-	console.log("│          Sauce v0.1.0               │");
+	console.log("│          Turf v0.1.0                │");
 	console.log("╰─────────────────────────────────────╯\n");
 
 	// Check if already initialized
 	const coordDir = join(projectRoot, ".coord");
 	if (existsSync(coordDir) && !options.force) {
-		console.log("⚠ Sauce is already initialized in this directory.");
+		console.log("⚠ Turf is already initialized in this directory.");
 		console.log("  Use --force to reinitialize.\n");
 		return;
 	}
@@ -71,7 +71,7 @@ export function init(options: InitOptions = {}): void {
 	}
 
 	// Create config file
-	const configPath = join(projectRoot, "sauce.config.json");
+	const configPath = join(projectRoot, "turf.config.json");
 	const config: CieloConfig = {
 		workers,
 		baseBranch: DEFAULT_CONFIG.baseBranch,
@@ -81,18 +81,18 @@ export function init(options: InitOptions = {}): void {
 
 	if (!existsSync(configPath) || options.force) {
 		writeFileSync(configPath, JSON.stringify(config, null, "\t"));
-		console.log("  ✓ Created sauce.config.json");
+		console.log("  ✓ Created turf.config.json");
 	}
 
 	// Create basic agent skills
 	console.log("\nInstalling agent skills...");
 	createAgentSkills(projectRoot, options.force);
 
-	console.log("\n✅ Sauce is ready!\n");
+	console.log("\n✅ Turf is ready!\n");
 	console.log("Next steps:");
-	console.log('  1. Create tasks:    sauce task create --title "Your task"');
-	console.log("  2. Register worker: sauce worker register --id worker-1");
-	console.log("  3. Claim task:      sauce task claim --worker worker-1");
+	console.log('  1. Create tasks:    turf task create --title "Your task"');
+	console.log("  2. Register worker: turf worker register --id worker-1");
+	console.log("  3. Claim task:      turf task claim --worker worker-1");
 	console.log("");
 }
 
@@ -103,7 +103,7 @@ function createAgentSkills(projectRoot: string, force?: boolean): void {
 	const commandsDir = join(projectRoot, ".claude/commands");
 
 	const skills: Record<string, string> = {
-		"sauce.md": getSauceSkill(),
+		"turf.md": getSauceSkill(),
 		"manager.md": getManagerSkill(),
 		"worker.md": getWorkerSkill(),
 	};
@@ -118,34 +118,34 @@ function createAgentSkills(projectRoot: string, force?: boolean): void {
 }
 
 /**
- * Sauce skill - system overview and commands.
+ * Turf skill - system overview and commands.
  */
 function getSauceSkill(): string {
-	return `# SAUCE — Coordination System
+	return `# TURF — Coordination System
 
-You are operating within the Sauce coordination system for parallel Claude Code agents.
+You are operating within the Turf coordination system for parallel Claude Code agents.
 
 ## Quick Reference
 
 ### Task Commands
 \`\`\`bash
-sauce task create --title "Title" --scope "src/**"  # Create task
-sauce task list                                       # List all tasks
-sauce task claim --worker worker-1                   # Claim next task
-sauce task complete --id T-0001                      # Complete task
+turf task create --title "Title" --scope "src/**"  # Create task
+turf task list                                       # List all tasks
+turf task claim --worker worker-1                   # Claim next task
+turf task complete --id T-0001                      # Complete task
 \`\`\`
 
 ### Worker Commands
 \`\`\`bash
-sauce worker register --id worker-1                  # Register worker
-sauce worker list                                     # List workers
-sauce worker heartbeat --id worker-1                 # Update heartbeat
+turf worker register --id worker-1                  # Register worker
+turf worker list                                     # List workers
+turf worker heartbeat --id worker-1                 # Update heartbeat
 \`\`\`
 
 ### Queue Commands
 \`\`\`bash
-sauce queue list                                      # List queue items
-sauce queue enqueue --branch feat/x --scope "src/**" # Add to queue
+turf queue list                                      # List queue items
+turf queue enqueue --branch feat/x --scope "src/**" # Add to queue
 \`\`\`
 
 ## Coordination Files
@@ -154,7 +154,7 @@ sauce queue enqueue --branch feat/x --scope "src/**" # Add to queue
 - \`.coord/workers.json\` - Registered workers
 - \`.coord/queue.json\` - Integration queue
 - \`.coord/leases.json\` - Active scope claims
-- \`sauce.config.json\` - Configuration
+- \`turf.config.json\` - Configuration
 
 ## Best Practices
 
@@ -179,7 +179,7 @@ You are the Manager agent responsible for:
 ## Creating Tasks
 
 \`\`\`bash
-sauce task create \\
+turf task create \\
   --title "Implement feature X" \\
   --scope "src/feature/**" \\
   --priority high \\
@@ -189,9 +189,9 @@ sauce task create \\
 ## Monitoring
 
 \`\`\`bash
-sauce task list --status pending    # Pending tasks
-sauce task list --status assigned   # Assigned tasks
-sauce worker list                    # Worker status
+turf task list --status pending    # Pending tasks
+turf task list --status assigned   # Assigned tasks
+turf worker list                    # Worker status
 \`\`\`
 `;
 }
@@ -211,15 +211,15 @@ You are a Worker agent responsible for:
 
 1. Claim a task:
    \`\`\`bash
-   sauce task claim --worker {{WORKER_ID}}
+   turf task claim --worker {{WORKER_ID}}
    \`\`\`
 
 2. Work on the task within the claimed scope
 
 3. Complete and enqueue:
    \`\`\`bash
-   sauce task complete --id T-XXXX
-   sauce queue enqueue --branch your-branch --scope "files..."
+   turf task complete --id T-XXXX
+   turf queue enqueue --branch your-branch --scope "files..."
    \`\`\`
 `;
 }
