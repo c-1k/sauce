@@ -1,5 +1,5 @@
 /**
- * Cielo Engine — Task Management
+ * Turf Engine — Task Management
  *
  * Core task operations for the coordination system.
  * Handles task lifecycle: create, assign, claim, start, complete.
@@ -13,7 +13,7 @@ import type { Task, TaskPriority, TaskStatus, TaskStore } from "../types/engine"
 // Path Resolution
 // ---------------------------------------------------------------------------
 
-let coordDir = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+let coordDir = process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
 
 /**
  * Set the coordination directory path.

@@ -1,5 +1,5 @@
 /**
- * Cielo CLI — Command Exports
+ * Turf CLI — Command Exports
  */
 
 export * from "./init";

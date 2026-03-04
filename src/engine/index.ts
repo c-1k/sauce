@@ -1,5 +1,5 @@
 /**
- * Cielo Engine — Core Coordination System
+ * Turf Engine — Core Coordination System
  *
  * The engine provides the core coordination primitives for multi-agent systems:
  * - Tasks: Work item management and lifecycle
@@ -52,7 +52,7 @@ export type {
 	Checkpoint,
 	CheckpointStore,
 	// Config types
-	CieloEngineConfig,
+	TurfEngineConfig,
 	CoordPaths,
 } from "../types/engine";
 

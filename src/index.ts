@@ -1,5 +1,5 @@
 /**
- * Cielo - Coordination system for parallel Claude Code agents
+ * Turf — Coordination layer for AI agent swarms
  *
  * @packageDocumentation
  */

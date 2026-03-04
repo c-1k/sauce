@@ -1,5 +1,5 @@
 /**
- * CIELO v3 Governance — Messaging
+ * Turf Governance — Messaging
  *
  * Provides inter-agent messaging for the coordination system.
  * Messages are stored in messages.json and can be read by recipient agents.
@@ -48,7 +48,7 @@ import { emitReceipt } from "./audit";
 // Configuration
 // ---------------------------------------------------------------------------
 
-const COORD_DIR = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+const COORD_DIR = process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
 const MESSAGES_FILE = join(COORD_DIR, "messages.json");
 
 // ---------------------------------------------------------------------------

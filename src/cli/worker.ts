@@ -1,5 +1,5 @@
 /**
- * Cielo CLI — Worker Commands
+ * Turf CLI — Worker Commands
  *
  * Worker management: register, list, heartbeat.
  */
@@ -19,7 +19,7 @@ interface Worker {
 type WorkerStore = Record<string, Worker>;
 
 function getCoordDir(): string {
-	return process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+	return process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
 }
 
 function getWorkersFile(): string {

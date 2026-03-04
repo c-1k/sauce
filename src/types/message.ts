@@ -1,12 +1,12 @@
 /**
- * Cielo v3 Governance - Message Types
+ * Turf Governance — Message Types
  *
  * Defines the message envelope format and payload types for
- * inter-agent communication in the Cielo multi-agent system.
+ * inter-agent communication in the Turf multi-agent system.
  */
 
 /**
- * Roles that agents can assume in the Cielo system.
+ * Roles that agents can assume in the Turf system.
  */
 export type AgentRole =
 	| "manager"
@@ -167,7 +167,7 @@ export type MessagePayload =
 
 /**
  * The standard message envelope for all inter-agent communication.
- * All messages in the Cielo system are wrapped in this envelope.
+ * All messages in the Turf system are wrapped in this envelope.
  */
 export interface MessageEnvelope<T extends MessagePayload = MessagePayload> {
 	/** Protocol version */

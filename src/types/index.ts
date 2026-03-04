@@ -1,5 +1,5 @@
 /**
- * Cielo OS — Type Definitions
+ * Turf — Type Definitions
  *
  * Re-exports all type definitions for the coordination system.
  */

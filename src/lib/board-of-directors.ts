@@ -20,6 +20,8 @@
  * ```
  */
 
+import { reviewNow as _reviewNow } from "../board/board";
+
 // Re-export all Board types
 export type {
 	BoardDecision,
@@ -72,8 +74,7 @@ export function evaluateDecision(
 		correlationId?: string;
 	},
 ): import("../board/types").BoardReviewResult {
-	const { reviewNow } = require("../board/board");
-	return reviewNow(decisionType, actor, description, context ?? {});
+	return _reviewNow(decisionType, actor, description, context ?? {});
 }
 
 /**

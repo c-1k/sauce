@@ -1,15 +1,15 @@
 import { z } from "zod";
 
-export const CieloConfigSchema = z.object({
+export const TurfConfigSchema = z.object({
 	workers: z.number().min(1).default(2),
 	baseBranch: z.string().default("main"),
 	stagingBranch: z.string().default("staging"),
 	coordDir: z.string().default(".coord"),
 });
 
-export type CieloConfig = z.infer<typeof CieloConfigSchema>;
+export type TurfConfig = z.infer<typeof TurfConfigSchema>;
 
-export const DEFAULT_CONFIG: CieloConfig = {
+export const DEFAULT_CONFIG: TurfConfig = {
 	workers: 2,
 	baseBranch: "main",
 	stagingBranch: "staging",
