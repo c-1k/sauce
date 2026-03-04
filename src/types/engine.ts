@@ -1,5 +1,5 @@
 /**
- * Cielo Engine Types
+ * Turf Engine Types
  *
  * Core type definitions for the coordination engine extracted from write-guard.ts.
  * These types define the data structures for leases, queues, workers, tasks, and more.
@@ -288,7 +288,7 @@ export interface CheckpointStore {
 // Configuration Types
 // ---------------------------------------------------------------------------
 
-export interface CieloEngineConfig {
+export interface TurfEngineConfig {
 	projectRoot: string;
 	coordDir: string;
 }

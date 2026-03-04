@@ -1,5 +1,5 @@
 /**
- * CIELO v3 Governance — Policy Gate
+ * Turf Governance — Policy Gate
  *
  * Evaluates policy rules against actions to determine allow/deny decisions.
  * Supports both hard (blocking) and soft (warning) enforcement modes.
@@ -34,7 +34,7 @@ import type {
 // Configuration
 // ---------------------------------------------------------------------------
 
-const COORD_DIR = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+const COORD_DIR = process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
 const POLICY_FILE = join(COORD_DIR, "policies.json");
 
 // ---------------------------------------------------------------------------

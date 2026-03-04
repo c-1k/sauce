@@ -5,7 +5,7 @@
  * Unanimous veto = BLOCK. Escalates to human on critical decisions.
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { listDirectors, reviewDecision } from "./director";
 import type {
@@ -21,7 +21,7 @@ import type {
 // Configuration
 // ---------------------------------------------------------------------------
 
-const COORD_DIR = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+const COORD_DIR = process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
 const BOARD_DIR = join(COORD_DIR, "board");
 const SESSION_FILE = join(BOARD_DIR, "session.json");
 const HISTORY_FILE = join(BOARD_DIR, "history.jsonl");
@@ -79,8 +79,7 @@ function saveSession(session: BoardSession): void {
 function appendHistory(result: BoardReviewResult): void {
 	ensureBoardDir();
 	const line = `${JSON.stringify(result)}\n`;
-	const fs = require("node:fs");
-	fs.appendFileSync(HISTORY_FILE, line);
+	appendFileSync(HISTORY_FILE, line);
 }
 
 // ---------------------------------------------------------------------------

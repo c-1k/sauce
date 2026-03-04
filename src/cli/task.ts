@@ -1,5 +1,5 @@
 /**
- * Cielo CLI — Task Commands
+ * Turf CLI — Task Commands
  *
  * Task management: create, list, claim, complete.
  */
@@ -27,7 +27,7 @@ interface Task {
 type TaskStore = Record<string, Task>;
 
 function getCoordDir(): string {
-	return process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+	return process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
 }
 
 function getTasksFile(): string {

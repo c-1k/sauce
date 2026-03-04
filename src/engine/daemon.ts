@@ -1,5 +1,5 @@
 /**
- * Cielo Engine — Daemon Management
+ * Turf Engine — Daemon Management
  *
  * Background daemon operations for the coordination system.
  * Handles integrator daemon: start, stop, status, and watch modes.
@@ -9,15 +9,15 @@
  */
 
 import { execSync } from "node:child_process";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 // ---------------------------------------------------------------------------
 // Path Resolution
 // ---------------------------------------------------------------------------
 
-let coordDir = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
-let repoRoot = process.env["CIELO_ROOT"] ?? process.cwd();
+let coordDir = process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
+let repoRoot = process.env["TURF_ROOT"] ?? process.cwd();
 
 /**
  * Set the coordination directory path.
@@ -76,7 +76,7 @@ export function getDaemonPid(): number | null {
 
 	// Check if process is actually running
 	try {
-		execSync(`kill -0 ${pid} 2>/dev/null`, { cwd: repoRoot });
+		process.kill(pid, 0);
 		return pid;
 	} catch {
 		return null;
@@ -104,7 +104,7 @@ export function removeDaemonPid(): void {
 	const pidPath = getDaemonPidPath();
 	if (existsSync(pidPath)) {
 		try {
-			execSync(`rm "${pidPath}"`, { cwd: repoRoot });
+			unlinkSync(pidPath);
 		} catch {
 			// Ignore removal errors
 		}
@@ -143,7 +143,7 @@ export function stopDaemon(): { success: boolean; error?: string } {
 	}
 
 	try {
-		execSync(`kill ${pid}`, { cwd: repoRoot });
+		process.kill(pid, "SIGTERM");
 		removeDaemonPid();
 		return { success: true };
 	} catch (err) {

@@ -1,8 +1,8 @@
 /**
- * Cielo v3 Governance - Policy Types
+ * Turf Governance — Policy Types
  *
  * Defines the policy evaluation system types for controlling
- * agent actions and resource access in the Cielo multi-agent system.
+ * agent actions and resource access in the Turf multi-agent system.
  */
 
 /**

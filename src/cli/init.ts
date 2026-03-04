@@ -6,7 +6,7 @@
 
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { type CieloConfig, DEFAULT_CONFIG } from "../config";
+import { type TurfConfig, DEFAULT_CONFIG } from "../config";
 
 interface InitOptions {
 	projectRoot?: string | undefined;
@@ -72,7 +72,7 @@ export function init(options: InitOptions = {}): void {
 
 	// Create config file
 	const configPath = join(projectRoot, "turf.config.json");
-	const config: CieloConfig = {
+	const config: TurfConfig = {
 		workers,
 		baseBranch: DEFAULT_CONFIG.baseBranch,
 		stagingBranch: DEFAULT_CONFIG.stagingBranch,
@@ -103,7 +103,7 @@ function createAgentSkills(projectRoot: string, force?: boolean): void {
 	const commandsDir = join(projectRoot, ".claude/commands");
 
 	const skills: Record<string, string> = {
-		"turf.md": getSauceSkill(),
+		"turf.md": getTurfSkill(),
 		"manager.md": getManagerSkill(),
 		"worker.md": getWorkerSkill(),
 	};
@@ -120,7 +120,7 @@ function createAgentSkills(projectRoot: string, force?: boolean): void {
 /**
  * Turf skill - system overview and commands.
  */
-function getSauceSkill(): string {
+function getTurfSkill(): string {
 	return `# TURF — Coordination System
 
 You are operating within the Turf coordination system for parallel Claude Code agents.

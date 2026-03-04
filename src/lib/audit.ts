@@ -1,5 +1,5 @@
 /**
- * CIELO v3 Governance — Audit
+ * Turf Governance — Audit
  *
  * Provides audit receipt emission and correlation tracing for the coordination
  * system. All operations are logged to events.jsonl for observability.
@@ -33,7 +33,7 @@ import type { AuditReceipt, CorrelationContext, ReceiptKind } from "../types/gov
 // Configuration
 // ---------------------------------------------------------------------------
 
-const COORD_DIR = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+const COORD_DIR = process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
 const EVENTS_FILE = join(COORD_DIR, "events.jsonl");
 const AUDIT_DIR = join(COORD_DIR, "audit");
 const INDEX_FILE = join(AUDIT_DIR, "index.json");
@@ -485,15 +485,37 @@ export function listReceipts(kind: ReceiptKind, date?: string): AuditReceipt[] {
  * Get a specific receipt by ID.
  */
 export function getReceipt(kind: ReceiptKind, receiptId: string): AuditReceipt | undefined {
-	const receiptFile = join(AUDIT_DIR, kind, `${receiptId}.json`);
-	if (!existsSync(receiptFile)) return undefined;
+	// Check legacy flat path first
+	const flatPath = join(AUDIT_DIR, kind, `${receiptId}.json`);
+	if (existsSync(flatPath)) {
+		try {
+			const raw = readFileSync(flatPath, "utf-8");
+			return JSON.parse(raw) as AuditReceipt;
+		} catch {
+			return undefined;
+		}
+	}
+
+	// Check daily rotation directories
+	const kindDir = join(AUDIT_DIR, kind);
+	if (!existsSync(kindDir)) return undefined;
 
 	try {
-		const raw = readFileSync(receiptFile, "utf-8");
-		return JSON.parse(raw) as AuditReceipt;
+		const entries = readdirSync(kindDir, { withFileTypes: true });
+		for (const entry of entries) {
+			if (entry.isDirectory()) {
+				const receiptPath = join(kindDir, entry.name, `${receiptId}.json`);
+				if (existsSync(receiptPath)) {
+					const raw = readFileSync(receiptPath, "utf-8");
+					return JSON.parse(raw) as AuditReceipt;
+				}
+			}
+		}
 	} catch {
 		return undefined;
 	}
+
+	return undefined;
 }
 
 /**

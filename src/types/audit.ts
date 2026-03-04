@@ -1,8 +1,8 @@
 /**
- * Cielo v3 Governance - Audit Types
+ * Turf Governance — Audit Types
  *
  * Defines the audit trail types for tracking all significant
- * events in the Cielo multi-agent system.
+ * events in the Turf multi-agent system.
  */
 
 /**

@@ -1,5 +1,5 @@
 /**
- * Cielo Engine — Event Management
+ * Turf Engine — Event Management
  *
  * Core event operations for the coordination system.
  * Handles event emission, correlation tracking, and hook execution.
@@ -14,8 +14,8 @@ import type { CoordEvent } from "../types/engine";
 // Path Resolution
 // ---------------------------------------------------------------------------
 
-let coordDir = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
-let repoRoot = process.env["CIELO_ROOT"] ?? process.cwd();
+let coordDir = process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
+let repoRoot = process.env["TURF_ROOT"] ?? process.cwd();
 
 /**
  * Set the coordination directory path.
@@ -85,7 +85,7 @@ export function getCurrentBranch(): string {
  * Get actor ID from environment or git config.
  */
 export function getActorId(): string {
-	const envActor = process.env["WRITE_GUARD_ACTOR"] ?? process.env["CIELO_ACTOR"];
+	const envActor = process.env["TURF_ACTOR"] ?? process.env["WRITE_GUARD_ACTOR"];
 	if (envActor) return envActor;
 	try {
 		return execSync("git config user.email", { cwd: repoRoot, encoding: "utf-8" }).trim();
@@ -211,9 +211,8 @@ export function executeHook(hookName: string, eventData: Record<string, unknown>
 	}
 
 	try {
-		// Escape single quotes in JSON for shell
-		const eventJson = JSON.stringify(eventData).replace(/'/g, "'\\''");
-		const output = execSync(`echo '${eventJson}' | bash "${hookPath}"`, {
+		const output = execSync(`bash "${hookPath}"`, {
+			input: JSON.stringify(eventData),
 			cwd: repoRoot,
 			encoding: "utf-8",
 			stdio: ["pipe", "pipe", "pipe"],

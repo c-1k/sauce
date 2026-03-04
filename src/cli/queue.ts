@@ -1,5 +1,5 @@
 /**
- * Cielo CLI — Queue Commands
+ * Turf CLI — Queue Commands
  *
  * Integration queue management: enqueue, list, process.
  */
@@ -25,7 +25,7 @@ interface QueueItem {
 type QueueStore = Record<string, QueueItem>;
 
 function getCoordDir(): string {
-	return process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+	return process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
 }
 
 function getQueueFile(): string {

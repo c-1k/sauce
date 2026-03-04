@@ -1,5 +1,5 @@
 /**
- * Cielo Engine — Worker Management
+ * Turf Engine — Worker Management
  *
  * Core worker operations for the coordination system.
  * Handles worker lifecycle: register, heartbeat, status updates.
@@ -19,7 +19,7 @@ import type {
 // Path Resolution
 // ---------------------------------------------------------------------------
 
-let coordDir = process.env["CIELO_COORD"] ?? join(process.cwd(), ".coord");
+let coordDir = process.env["TURF_COORD"] ?? join(process.cwd(), ".coord");
 
 /**
  * Set the coordination directory path.

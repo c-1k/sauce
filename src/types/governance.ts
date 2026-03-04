@@ -1,5 +1,5 @@
 /**
- * CIELO v3 Governance Types
+ * Turf Governance Types
  *
  * Type definitions for the governance subsystem including policy evaluation,
  * audit receipts, and inter-agent messaging.

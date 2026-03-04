@@ -6,8 +6,7 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"bin": {
-		"turf": "./bin/turf.ts",
-		"cielo": "./bin/turf.ts"
+		"turf": "./bin/turf.ts"
 	},
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
@@ -21,7 +20,6 @@
 	},
 	"keywords": [
 		"turf",
-		"cielo",
 		"claude",
 		"claude-code",
 		"ai-agents",
